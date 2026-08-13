@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Embed Wrapper</title>
+
+  <!-- Canva needs these tags to generate a preview and accept the link! -->
+  <meta property="og:title" content="Cloud-20 Games">
+  <meta property="og:description" content="Embed wrapper for Canva">
+  <meta property="og:type" content="website">
+
   <style>
-    /* Reset margins and paddings so the iframe fills 100% of the Canva embed container */
     html, body {
       margin: 0;
       padding: 0;
@@ -14,15 +19,11 @@
       overflow: hidden;
       background-color: transparent;
     }
-
-    /* Outer wrapper container */
     .iframe-container {
       width: 100%;
       height: 100%;
       position: relative;
     }
-
-    /* Nested iframe styling */
     .wrapper-iframe {
       width: 100%;
       height: 100%;
@@ -32,9 +33,7 @@
   </style>
 </head>
 <body>
-
   <div class="iframe-container" id="container">
-    <!-- OPTION A: Hardcode your desired URL directly in the src attribute below -->
     <iframe 
       id="nestedIframe" 
       class="wrapper-iframe" 
@@ -43,18 +42,12 @@
       allowfullscreen>
     </iframe>
   </div>
-
   <script>
-    // OPTION B: Dynamic URL loading via query parameter
-    // If you add ?url=https://your-target-url.com to your GitHub Pages link in Canva,
-    // this script automatically loads it into the inner iframe.
     const urlParams = new URLSearchParams(window.location.search);
     const targetUrl = urlParams.get('url');
-
     if (targetUrl) {
       document.getElementById('nestedIframe').src = targetUrl;
     }
   </script>
-
 </body>
 </html>
